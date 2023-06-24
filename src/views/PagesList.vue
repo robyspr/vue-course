@@ -6,7 +6,7 @@
             class="btn btn-primary btn-sm"
         >New Page</router-link>
     </div>
-    <table class="table table-striped table-hover">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>Title</th>
@@ -18,6 +18,7 @@
             <tr 
                 v-for="(page, index) in $pages.getAllPages()"
                 :key="index"
+                @click.prevent="goToPage(index)"
                 >
                 <td>{{ page.pageTitle }}</td>
                 <td>{{ page.link.text }}</td>
@@ -31,14 +32,16 @@
 <script setup>
 //importing hooks to make the varialbe reactive
 import {ref, reactive, inject} from 'vue';
+import {useRouter} from 'vue-router';
 
 // const counter = ref(0); //value->0
 //reactive is used for Object, not premetive data
 const data = reactive({counter: 0});
 const $pages = inject('$pages');
+const router = useRouter();
 
-function click() {
-    data.counter++;
+function goToPage(index) {
+    router.push({path:`pages/${index}/edit`});
 }
 // export default {
 //     data(){
@@ -54,3 +57,9 @@ function click() {
 // }
 
 </script>
+
+<style scoped>
+.table.table-hover tr:hover {
+    cursor: pointer;
+}
+</style>
