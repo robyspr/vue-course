@@ -15,7 +15,7 @@ const router = createRouter({
             children: [
                 {path: '', component: PagesList},
                 {path: 'create', component: CreatePage},
-                {path: ':index/edit', component: PageEdit}
+                {path: ':index/edit', component: PageEdit, props: true}
             ]
         }
     ]
