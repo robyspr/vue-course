@@ -9,13 +9,14 @@
 
 <script>
 export default {
+    props: ['index'],
+    inject: ['$pages'],
     created() {
         this.page = this.$pages.getSinglePage(this.index);
         // this.$watch(
         //     () => this.$route.params,
         //     (newParams,prevParams) => this.page = this.$pages.getSinglePage(newParams.index));
     },
-    props: ['index'],
     data() {
         return {
             page: null

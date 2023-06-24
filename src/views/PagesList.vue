@@ -8,17 +8,16 @@
 <!-- the setup attribute mean we are using the composition api -->
 <script setup>
 //importing hooks to make the varialbe reactive
-import {ref, reactive} from 'vue';
+import {ref, reactive, inject} from 'vue';
 
 // const counter = ref(0); //value->0
 //reactive is used for Object, not premetive data
 const data = reactive({counter: 0});
+const $pages = inject('$pages');
 
 function click() {
     data.counter++;
 }
-
-
 // export default {
 //     data(){
 //         return {
@@ -31,4 +30,5 @@ function click() {
 //         }
 //     }
 // }
+
 </script>

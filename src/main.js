@@ -13,6 +13,10 @@ const app = createApp(App);
 app.use(router);
 //every component will have access to the $bus object
 app.config.globalProperties.$bus = $bus;
-app.config.globalProperties.$pages = $pages;
+// app.config.globalProperties.$pages = $pages;
+
+//providing a globally accessible object
+//we need to inject the object where is needed
+app.provide('$pages',$pages);
 
 app.mount('#app');
