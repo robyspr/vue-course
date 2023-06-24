@@ -5,7 +5,7 @@ import PageViewer from "./components/PageViewer.vue";
 const router = createRouter({
     history: createWebHashHistory(),
     routes: [
-        {path: '/', component: PageViewer},
+        {path: '/:index?', component: PageViewer, props: true},
         {path: '/create', component: CreatePage}
     ]
 

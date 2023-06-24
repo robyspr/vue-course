@@ -1,15 +1,31 @@
 <template>
-    <div  class="container">
+    <div v-if="page"  class="container">
         <!-- <h1 class="emphasize"> {{page.pageTitle}} </h1> -->
-        <h1 class="emphasize"> Page Title </h1>
-        <!-- <p> {{page.content}} </p> -->
-        <p> Content</p>
+        <h1 class="emphasize"> {{ page.pageTitle }} </h1>
+        <p> {{page.content}} </p>
+        <!-- <p> {{$route.params.index}}</p> -->
     </div>
 </template>
 
 <script>
 export default {
-    props: ['page']
+    created() {
+        this.page = this.$pages.getSinglePage(this.index);
+        // this.$watch(
+        //     () => this.$route.params,
+        //     (newParams,prevParams) => this.page = this.$pages.getSinglePage(newParams.index));
+    },
+    props: ['index'],
+    data() {
+        return {
+            page: null
+        };
+    },
+    watch: {
+        index(newIndex, oldIndex) {
+            this.page = this.$pages.getSinglePage(newIndex);
+        }
+    }
 }
 </script>
 
