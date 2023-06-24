@@ -55,6 +55,7 @@
                    Edit</button>
                 <button 
                     class="btn btn-secondary"
+                    @click.prevent="goToPagesList"
                     >Cancel</button>
             </div>
         </div>
@@ -64,15 +65,29 @@
 <script setup>
 import { inject } from "vue";
 import { useRouter } from "vue-router";
+
 // essentially the $route in Options API
 const router = useRouter();
 const pages = inject('$pages');
+const bus = inject('$bus');
 
 const {index} = defineProps(['index']);
+
 let page = pages.getSinglePage(index);
 
 function submit() {
     pages.editPage(index,page);
+
+    bus.$emit('page-updated', {
+        index,
+        page
+    });
+
+    goToPagesList();
+}
+
+function goToPagesList() {
+    router.push({path:'/pages'})
 }
 
 </script>

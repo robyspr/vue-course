@@ -34,10 +34,18 @@ export default {
     components: {
         NavbarLink
     },
-    inject: ['$pages'],
+    inject: ['$pages','$bus'],
     created() {
         this.getThemeSetting();
+
         this.pages = this.$pages.getAllPages();
+
+        //by creating a new array now the component gegts that the page object changed
+        this.$bus.$on(
+            'page-updated',
+            () => {
+                this.pages = [...this.$pages.getAllPages()];
+            })
     },
     computed: {
         publishedPages() {
