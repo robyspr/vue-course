@@ -1,0 +1,18 @@
+[{
+    "link": {"text":"Home", "url": "index.html"},
+    "pageTitle": "Home page",
+    "content": "Welcome to the home page",
+    "published": true
+},
+{
+    "link": {"text":"About", "url": "about.html"},
+    "pageTitle": "About page",
+    "content": "Welcome to the about page",
+    "published": true
+},
+{
+    "link": {"text":"Contact", "url": "contact.html"},
+    "pageTitle": "Contact page",
+    "content": "Welcome to the contact page",
+    "published": false
+}]
